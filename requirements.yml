@@ -1,0 +1,13 @@
+name: gpt-reasoning
+channels:
+        - conda-forge
+        - defaults
+dependencies:
+        - hydra-core
+        - ipython  # local-only
+        - tqdm  # local-only
+        - numpy
+        - pandas
+        - python 3.10.6
+        - sympy
+        - seaborn
