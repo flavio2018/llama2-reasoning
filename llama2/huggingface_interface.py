@@ -98,8 +98,8 @@ class HFInterface:
                     outputs.append(text_generation_res.generated_text)
                     keep_querying = False
                 
-                    if text_generation_res.details['finish_reason'] == 'length':
-                        outputs[-1] = '[L]' + outputs[-1]
+                    # if text_generation_res.details['finish_reason'] == 'length':
+                    #     outputs[-1] = '[L]' + outputs[-1]
         
         return outputs
 
@@ -146,7 +146,7 @@ class HFInterface:
                     final_outputs.append(text_generation_res.generated_text)
                     keep_querying = False
 
-                    if text_generation_res.details['finish_reason'] == 'length':
-                        final_outputs[-1] = '[L]' + final_outputs[-1]
+                    # if text_generation_res.details['finish_reason'] == 'length':
+                    #     final_outputs[-1] = '[L]' + final_outputs[-1]
 
         return final_outputs
