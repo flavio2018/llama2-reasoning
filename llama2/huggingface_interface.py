@@ -105,7 +105,7 @@ class HFInterface:
 
     def query_model_zero_shot_cot(self, prompts, system=None):
         print(f"Querying Llama 2 with {2*len(prompts)} prompts...")
-        outputs = []
+        self.zero_cot_first_outputs = []
 
         if system is None:
             system = self.default_system_message
@@ -124,10 +124,10 @@ class HFInterface:
                     max_new_tokens -= self.max_new_tokens_decrease
 
                 else:
-                    outputs.append(text_generation_res.generated_text)
+                    self.zero_cot_first_outputs.append(text_generation_res.generated_text)
                     keep_querying = False
 
-        prompts_with_answer = [[prompt, output, "Give only the final answer (arabic number):"] for prompt, output in zip(prompts, outputs)]
+        prompts_with_answer = [[prompt, output, "Give only the final answer (arabic number):"] for prompt, output in zip(prompts, self.zero_cot_first_outputs)]
         structured_prompts_with_answer = self._build_structured_prompts(prompts_with_answer, system)
         final_outputs = []
 
