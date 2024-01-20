@@ -109,12 +109,12 @@ class ArithmeticPromptBuilder(PromptBuilder):
         super().__init__()
         self.task_name = 'arithmetic'
         self.blueprints = {
-            "zero_shot": "Q: Solve the following arithmetic expression computing the modulo 100 of each intermediate value "
-                         "if it's positive, and the modulo -100 if it's negative:\n{}.\n\n"
+            "zero_shot": "Q: Solve the following arithmetic expression:\n{}.\nEach time you take a step compute the modulo 100 of the intermediate value "
+                         "if it's positive, and the modulo -100 if it's negative.\n\n"
                          "A: The final result is (arabic numerals):",
 
-            "zero_shot_cot": "Solve the following arithmetic expression computing the modulo 100 of each intermediate value "
-                             "if it's positive, and the modulo -100 if it's negative:\n{}.\nThink step-by-step.\n\n",
+            "zero_shot_cot": "Solve the following arithmetic expression:\n{}.\nThink step-by-step. Each time you take a step compute the modulo 100 of the intermediate value "
+                             "if it's positive, and the modulo -100 if it's negative.\n\n"
 
             "examples": {"question": "Solve the following arithmetic expression taking each intermediate value modulo 100 if it's positive, and modulo -100 if it's negative: {}.",
                          "answer": "{}"},
