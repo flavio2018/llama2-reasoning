@@ -113,9 +113,8 @@ class ArithmeticPromptBuilder(PromptBuilder):
                          "if it's positive, and the modulo -100 if it's negative:\n{}.\n\n"
                          "A: The final result is (arabic numerals):",
 
-            "zero_shot_cot": "Q: Solve the following arithmetic expression computing the modulo 100 of each intermediate value "
-                             "if it's positive, and the modulo -100 if it's negative:\n{}.\n\n"
-                             "A: Let's think step-by-step.",
+            "zero_shot_cot": "Solve the following arithmetic expression computing the modulo 100 of each intermediate value "
+                             "if it's positive, and the modulo -100 if it's negative:\n{}.\nThink step-by-step.\n\n",
 
             "examples": {"question": "Solve the following arithmetic expression taking each intermediate value modulo 100 if it's positive, and modulo -100 if it's negative: {}.",
                          "answer": "{}"},
