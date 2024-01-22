@@ -30,7 +30,7 @@ class ModelQuerierOnTask:
 		if not self.load_outputs_df():
 			return
 
-		for sample_idx in trange(len(self.outputs_df), len(self.test_dataset_df)):
+		for sample_idx in tqdm.trange(len(self.outputs_df), len(self.test_dataset_df)):
 			sample = self.test_dataset_df.iloc[sample_idx]['X']
 			target = self.test_dataset_df.iloc[sample_idx]['Y']
 			prompt = self.prompt_builder.build_prompt([sample], self.prompt_type)[0]
