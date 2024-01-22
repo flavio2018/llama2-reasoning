@@ -151,10 +151,7 @@ class ListopsPromptBuilder(PromptBuilder):
                          "Solve the following expression involving these operators:\n{}.\n\n"
                          "A: The final result is (arabic numeral):",
 
-            "zero_shot_cot": "Q: MIN, MAX and SM are operators on lists of single-digit integers which have the semantics of "
-                             "minimum, maximum and sum modulo 10, respectively. "
-                             "Solve the following expression involving these operators:\n{}.\n\n"
-                             "A: Let's think step-by-step.",
+            "zero_shot_cot": "MIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Think step-by-step.",
 
             "examples": {"question": "MIN, MAX and SM are operators on lists of single-digit integers which have the semantics of "
                                      "minimum, maximum and sum modulo 10, respectively. "
