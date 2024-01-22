@@ -32,7 +32,7 @@ class ModelQuerierOnTask:
 		for sample_idx in range(len(self.outputs_df), len(self.test_dataset_df)):
 			sample = self.test_dataset_df.iloc[sample_idx]['X']
 			target = self.test_dataset_df.iloc[sample_idx]['Y']
-			prompt = self.prompt_builder([sample], self.prompt_type)[0]
+			prompt = self.prompt_builder.build_prompt([sample], self.prompt_type)[0]
 
 			if (cfg.prompt_type == 'zero_shot_cot'):
 				output = self.hfi.query_model_zero_shot_cot([prompt])[0]
