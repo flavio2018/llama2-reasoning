@@ -1,5 +1,4 @@
 import huggingface_hub
-import tqdm
 import pickle
 import datetime as dt
 
