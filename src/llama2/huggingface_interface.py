@@ -83,7 +83,7 @@ class HFInterface:
         
         structured_prompts = self._build_structured_prompts(prompts, system)
         
-        for prompt in tqdm.tqdm(structured_prompts):
+        for prompt in structured_prompts:
             max_new_tokens = self.max_new_tokens
             keep_querying = True
             
@@ -112,7 +112,7 @@ class HFInterface:
         
         structured_prompts = self._build_structured_prompts(prompts, system)
         
-        for prompt in tqdm.tqdm(structured_prompts):
+        for prompt in structured_prompts:
             max_new_tokens = self.max_new_tokens
             keep_querying = True
 
@@ -132,7 +132,7 @@ class HFInterface:
         structured_prompts_with_answer = self._build_structured_prompts(prompts_with_answer, system)
         final_outputs = []
 
-        for prompt in tqdm.tqdm(structured_prompts_with_answer):
+        for prompt in structured_prompts_with_answer:
             max_new_tokens = self.max_new_tokens_0shot_cot
             keep_querying = True
 
