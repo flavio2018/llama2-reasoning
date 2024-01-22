@@ -128,6 +128,9 @@ class HFInterface:
                     keep_querying = False
 
         prompts_with_answer = [[prompt, output, "So in short the final result is:"] for prompt, output in zip(prompts, self.zero_cot_first_outputs)]
+
+        # Thank you, now just output the final answer without writing anything else.
+
         structured_prompts_with_answer = self._build_structured_prompts(prompts_with_answer, system)
         final_outputs = []
 
