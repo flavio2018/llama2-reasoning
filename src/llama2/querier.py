@@ -50,9 +50,9 @@ class ModelQuerierOnTask:
 		self.dump_outputs_df()
 
 	def load_outputs_df(self):
-		if os.path.exists(f"../out/{self.model_name}/{self.task_name}_{self.prompt_type}.csv"):
+		if os.path.exists(f"{self.base_dir}/{self.task_name}_{self.prompt_type}.csv"):
 			print("Found existing output df.")
-			output_df = pd.read_csv(f"../out/{self.model_name}/{self.task_name}_{self.prompt_type}.csv", index_col=0)
+			output_df = pd.read_csv(f"{self.base_dir}/{self.task_name}_{self.prompt_type}.csv", index_col=0)
 
 			if len(outputs_df) < len(self.test_dataset_df):
 				print("Found less samples than in test set. Loading df and resuming run.")
@@ -67,5 +67,9 @@ class ModelQuerierOnTask:
 
 	def dump_outputs_df(self):
 		print(f"Dumping outputs DataFrame with {len(self.outputs_df)} samples...")
-		self.outputs_df.to_csv(f'../out/{self.model_name}/{self.task_name}_{self.prompt_type}.csv')
+		self.outputs_df.to_csv(f'{self.base_dir}/{self.task_name}_{self.prompt_type}.csv')
 		print("Done.")
+
+	@property
+	def base_dir(self):
+		return f"../out/models/{self.model_name}"
