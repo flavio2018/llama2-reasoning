@@ -52,7 +52,7 @@ class ModelQuerierOnTask:
 	def load_outputs_df(self):
 		if os.path.exists(f"{self.base_dir}/{self.task_name}_{self.prompt_type}.csv"):
 			print("Found existing output df.")
-			output_df = pd.read_csv(f"{self.base_dir}/{self.task_name}_{self.prompt_type}.csv", index_col=0)
+			outputs_df = pd.read_csv(f"{self.base_dir}/{self.task_name}_{self.prompt_type}.csv", index_col=0)
 
 			if len(outputs_df) < len(self.test_dataset_df):
 				print("Found less samples than in test set. Loading df and resuming run.")
