@@ -30,18 +30,18 @@ class ModelQuerierOnTask:
 			return
 
 		for sample_idx in range(len(self.outputs_df), len(self.test_dataset_df)):
-			sample = self.test_dataset_df.iloc[sample_idx]['X'].tolist()
-			target = self.test_dataset_df.iloc[sample_idx]['Y'].tolist()
-			prompt = self.prompt_builder(sample, self.prompt_type)
+			sample = self.test_dataset_df.iloc[sample_idx]['X']
+			target = self.test_dataset_df.iloc[sample_idx]['Y']
+			prompt = self.prompt_builder([sample], self.prompt_type)[0]
 
 			if (cfg.prompt_type == 'zero_shot_cot'):
-				output = self.hfi.query_model_zero_shot_cot(prompt)
+				output = self.hfi.query_model_zero_shot_cot([prompt])[0]
 				zero_shot_cot_first_out = self.hfi.zero_cot_first_outputs[0]
 			else:
-				output = self.hfi.query_model(prompt, None)
+				output = self.hfi.query_model(prompt, None)[0]
 				zero_shot_cot_first_out = None
 			
-			curr_outputs_df = pd.DataFrame([[self.task_name, self.prompt_type, prompt[0], zero_shot_cot_first_out, output[0], sample[0], target[0]]], columns=self.outputs_df.columns)
+			curr_outputs_df = pd.DataFrame([[self.task_name, self.prompt_type, prompt, zero_shot_cot_first_out, output, sample, target]], columns=self.outputs_df.columns)
 			self.outputs_df = pd.concat([self.outputs_df, curr_outputs_df], ignore_index=True)
 
 			if sample_idx % 10 == 0:
