@@ -22,7 +22,8 @@ class ModelQuerierOnTask:
 	             	 "0_shot_cot_first_out",
 					 "model_output",
 					 "original_input",
-					 "original_target"]
+					 "original_target",
+					 "difficulty_split"]
 		)
 		print(f"Created querier for {self.model_name} on {self.task_name} with {self.prompt_type} prompting.")
 
@@ -33,6 +34,9 @@ class ModelQuerierOnTask:
 		for sample_idx in tqdm.trange(len(self.outputs_df), len(self.test_dataset_df)):
 			sample = self.test_dataset_df.iloc[sample_idx]['X']
 			target = self.test_dataset_df.iloc[sample_idx]['Y']
+			nesting = self.test_dataset_df.iloc[sample_idx]['nesting']
+			num_operands = self.test_dataset_df.iloc[sample_idx]['num_operands']
+			difficulty_split = f"N{nesting}_O{num_operands}"
 			prompt = self.prompt_builder.build_prompt([sample], self.prompt_type)[0]
 
 			if (self.prompt_type == 'zero_shot_cot'):
@@ -42,7 +46,7 @@ class ModelQuerierOnTask:
 				output = self.hfi.query_model(prompt, None)[0]
 				zero_shot_cot_first_out = None
 			
-			curr_outputs_df = pd.DataFrame([[self.task_name, self.prompt_type, prompt, zero_shot_cot_first_out, output, sample, target]], columns=self.outputs_df.columns)
+			curr_outputs_df = pd.DataFrame([[self.task_name, self.prompt_type, prompt, zero_shot_cot_first_out, output, sample, target, difficulty_split]], columns=self.outputs_df.columns)
 			self.outputs_df = pd.concat([self.outputs_df, curr_outputs_df], ignore_index=True)
 
 			if sample_idx % 10 == 0:
