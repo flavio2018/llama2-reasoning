@@ -75,7 +75,7 @@ class HFInterface:
             assert False, f"Wrong prompt type {type(prompts[0])}"
 
     def query_model(self, prompts, system=None):
-        print(f"Querying Llama 2 with {len(prompts)} prompts...")
+        print(f"Querying model with {len(prompts)} prompts...")
         outputs = []
         
         if system is None:
@@ -104,7 +104,7 @@ class HFInterface:
         return outputs
 
     def query_model_zero_shot_cot(self, prompts, system=None):
-        print(f"Querying Llama 2 with {2*len(prompts)} prompts...")
+        print(f"Querying model with {2*len(prompts)} prompts...")
         self.zero_cot_first_outputs = []
 
         if system is None:
@@ -127,9 +127,7 @@ class HFInterface:
                     self.zero_cot_first_outputs.append(text_generation_res.generated_text)
                     keep_querying = False
 
-        prompts_with_answer = [[prompt, output, "So in short the final result is:"] for prompt, output in zip(prompts, self.zero_cot_first_outputs)]
-
-        # Thank you, now just output the final answer without writing anything else.
+        prompts_with_answer = [[prompt, output, "Thank you, now just output the final answer without writing anything else."] for prompt, output in zip(prompts, self.zero_cot_first_outputs)]
 
         structured_prompts_with_answer = self._build_structured_prompts(prompts_with_answer, system)
         final_outputs = []
