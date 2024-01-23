@@ -73,7 +73,7 @@ class HFInterface:
         else:
             assert False, f"Wrong prompt type {type(prompts[0])}"
 
-    def query_model(self, prompts, system=None):
+    def query_model(self, prompts, system=None, structured_prompt=True):
         print(f"Querying model with {len(prompts)} prompts...")
         outputs = []
         
@@ -82,7 +82,10 @@ class HFInterface:
         elif system is False:
             system = None
         
-        structured_prompts = self._build_structured_prompts(prompts, system)
+        if structured_prompt:
+            structured_prompts = self._build_structured_prompts(prompts, system)
+        else:
+            structured_prompts = prompts
         
         for prompt in structured_prompts:
             max_new_tokens = self.max_new_tokens
