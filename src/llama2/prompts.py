@@ -124,11 +124,8 @@ class AlgebraPromptBuilder(PromptBuilder):
         super().__init__()
         self.task_name = 'algebra'
         self.blueprints = {
-            "zero_shot": "Q: Simplify the following algebraic expression, computing the modulo 100 of the numerical coefficient of each "
-                         "intermediate value if it's positive, and the modulo -100 if it's negative:\n{}.\n"
-                         "If possible, factor by grouping the final result.\n\n"
-                         "A: The final result is (algebraic expression):",
-
+            "zero_shot": "Solve the following algebraic expression: {}. Take the modulo 100 of the coefficients of intermediate results, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is': <MONOMIAL>.",
+            
             "zero_shot_cot": "Solve the following algebraic expression:\n{}.\nThink step-by-step. The coefficients of intermediate results should always have two digits, so for each step you should always evaluate the modulo 100 of the intermediate result before computing the next step. Remember: taking the modulo 100 means keeping the last two digits of the number with the sign.\n\n",
 
             "examples": {"question": "Solve the following algebraic expression taking the numerical coefficient of each intermediate value "
