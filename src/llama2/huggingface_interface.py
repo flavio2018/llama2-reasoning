@@ -79,6 +79,8 @@ class HFInterface:
         
         if system is None:
             system = self.default_system_message
+        elif system is False:
+            system = None
         
         structured_prompts = self._build_structured_prompts(prompts, system)
         
