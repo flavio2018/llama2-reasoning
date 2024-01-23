@@ -109,10 +109,8 @@ class ArithmeticPromptBuilder(PromptBuilder):
         super().__init__()
         self.task_name = 'arithmetic'
         self.blueprints = {
-            "zero_shot": "Q: Solve the following arithmetic expression:\n{}.\nEach time you take a step compute the modulo 100 of the intermediate value "
-                         "if it's positive, and the modulo -100 if it's negative.\n\n"
-                         "A: The final result is (arabic numerals):",
-
+            "zero_shot": "Solve the following arithmetic expression: {}. Take the modulo 100 of intermediate values, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is': <NUMBER>.",
+            
             "zero_shot_cot": "Solve the following arithmetic expression:\n{}.\nThink step-by-step. Intermediate results should always have two digits, so for each step you should always evaluate the modulo 100 of the intermediate result before computing the next step. Remember: taking the modulo 100 means keeping the last two digits of the number with the sign.\n\n",
 
             "examples": {"question": "Solve the following arithmetic expression taking each intermediate value modulo 100 if it's positive, and modulo -100 if it's negative: {}.",
