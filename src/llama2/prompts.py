@@ -124,8 +124,8 @@ class AlgebraPromptBuilder(PromptBuilder):
         super().__init__()
         self.task_name = 'algebra'
         self.blueprints = {
-            "zero_shot": "Solve the following algebraic expression: {}. Take the modulo 100 of the coefficients of intermediate results, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is': <MONOMIAL>.",
-            
+            "zero_shot": "Solve the following algebraic expression: {}. Take the modulo 100 of the coefficients of intermediate results, i.e. keep the last two digits of the number with the sign and the variables. Give the final answer stating 'The final answer is': <MONOMIAL>.",
+
             "zero_shot_cot": "Solve the following algebraic expression:\n{}.\nThink step-by-step. The coefficients of intermediate results should always have two digits, so for each step you should always evaluate the modulo 100 of the intermediate result before computing the next step. Remember: taking the modulo 100 means keeping the last two digits of the number with the sign.\n\n",
 
             "examples": {"question": "Solve the following algebraic expression taking the numerical coefficient of each intermediate value "
@@ -141,10 +141,7 @@ class ListopsPromptBuilder(PromptBuilder):
         super().__init__()
         self.task_name = 'listops'
         self.blueprints = {
-            "zero_shot": "Q: MIN, MAX and SM are operators on lists of single-digit integers which have the semantics of "
-                         "minimum, maximum and sum modulo 10, respectively. "
-                         "Solve the following expression involving these operators:\n{}.\n\n"
-                         "A: The final result is (arabic numeral):",
+            "zero_shot": "MIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Give the final answer stating 'The final answer is: <NUMBER>'.",
 
             "zero_shot_cot": "MIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Think step-by-step.",
 
