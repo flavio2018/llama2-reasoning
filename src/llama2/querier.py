@@ -1,6 +1,6 @@
 from llama2.data import load_test_df
 from llama2 import HFInterface
-from prompts import get_prompt_builder
+from llama2.prompts import get_prompt_builder
 import pandas as pd
 import os
 import tqdm
