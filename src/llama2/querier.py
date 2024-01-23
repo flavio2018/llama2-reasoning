@@ -43,7 +43,7 @@ class ModelQuerierOnTask:
 				output = self.hfi.query_model_zero_shot_cot([prompt])[0]
 				zero_shot_cot_first_out = self.hfi.zero_cot_first_outputs[0]
 			else:
-				output = self.hfi.query_model(prompt, None)[0]
+				output = self.hfi.query_model([prompt], None)[0]
 				zero_shot_cot_first_out = None
 			
 			curr_outputs_df = pd.DataFrame([[self.task_name, self.prompt_type, prompt, zero_shot_cot_first_out, output, sample, target, difficulty_split]], columns=self.outputs_df.columns)
