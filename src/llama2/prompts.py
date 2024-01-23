@@ -7,7 +7,7 @@ class PromptBuilder:
     def __init__(self):
         self.task_name = None
         self.blueprints = None
-        self.prompts_wout_examples = ["zero_shot", "zero_shot_cot"]
+        self.prompts_wout_examples = ["zero_shot", "zero_shot_cot", "zs_mammoth", "zs_metamath"]
         self.prompts_with_examples = ["cot_equation", "cot_verbal", "few_shot"]
         self.verbal_examples_start_solution = [
             "Let's solve the following expression: {}.\n",
