@@ -113,7 +113,7 @@ class ArithmeticPromptBuilder(PromptBuilder):
             
             "zs_mammoth": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following arithmetic expression: {}. Take the modulo 100 of intermediate values, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response:\n",
 
-            "zs_metamath": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following arithmetic expression: {}. Take the modulo 100 of intermediate values, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response: Let's think step by step."
+            "zs_metamath": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following arithmetic expression: {}. Take the modulo 100 of intermediate values, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response: Let's think step by step.",
             
             "zero_shot_cot": "Solve the following arithmetic expression:\n{}.\nThink step-by-step. Intermediate results should always have two digits, so for each step you should always evaluate the modulo 100 of the intermediate result before computing the next step. Remember: taking the modulo 100 means keeping the last two digits of the number with the sign.\n\n",
 
@@ -132,7 +132,7 @@ class AlgebraPromptBuilder(PromptBuilder):
 
             "zs_mammoth": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following algebraic expression: {}. Take the modulo 100 of the coefficients of intermediate results, i.e. keep the last two digits of the number with the sign and the variables. Give the final answer stating 'The final answer is: <MONOMIAL>'.\n\n### Response:\n",
 
-            "zs_metamath": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following algebraic expression: {}. Take the modulo 100 of the coefficients of intermediate results, i.e. keep the last two digits of the number with the sign and the variables. Give the final answer stating 'The final answer is: <MONOMIAL>'.\n\n### Response: Let's think step by step."
+            "zs_metamath": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following algebraic expression: {}. Take the modulo 100 of the coefficients of intermediate results, i.e. keep the last two digits of the number with the sign and the variables. Give the final answer stating 'The final answer is: <MONOMIAL>'.\n\n### Response: Let's think step by step.",
 
             "zero_shot_cot": "Solve the following algebraic expression:\n{}.\nThink step-by-step. The coefficients of intermediate results should always have two digits, so for each step you should always evaluate the modulo 100 of the intermediate result before computing the next step. Remember: taking the modulo 100 means keeping the last two digits of the number with the sign.\n\n",
 
