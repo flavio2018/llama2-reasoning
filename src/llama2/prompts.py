@@ -153,7 +153,7 @@ class ListopsPromptBuilder(PromptBuilder):
 
             "zs_mammoth": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nMIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response:\n",
 
-            "zs_metamath": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n### Instruction:\nMIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response: Let's think step by step.",
+            "zs_metamath": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nMIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response: Let's think step by step.",
 
             "zero_shot_cot": "MIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Think step-by-step.",
 
