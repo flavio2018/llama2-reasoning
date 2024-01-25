@@ -12,9 +12,11 @@ class ModelQuerierOnTask:
 		self.model_name = cfg.model_name
 		self.task_name = cfg.task_name
 		self.prompt_type = cfg.prompt_type
+		self.difficulty_split = cfg.difficulty_split
 		self.hfi = HFInterface()
 		self.prompt_builder = get_prompt_builder(self.task_name)
 		self.test_dataset_df = load_test_df(self.task_name)
+		self.slice_difficulty_split()
 		self.outputs_df = pd.DataFrame(
 			columns=["task_name",
 					 "prompt_type",
@@ -57,10 +59,18 @@ class ModelQuerierOnTask:
 
 		self.dump_outputs_df()
 
+	def slice_difficulty_split(self):
+		if self.difficulty_split == '':
+			return
+		nesting, num_operands = self.difficulty_split.split('_')
+		nesting, num_operands = int(nesting[1]), int(num_operands[1])
+		self.test_dataset_df = self.test_dataset_df[(self.test_dataset_df['nesting'] == nesting) and (self.test_dataset_df['num_operands'] == num_operands)]
+
+
 	def load_outputs_df(self):
-		if os.path.exists(f"{self.base_dir}/{self.task_name}_{self.prompt_type}.csv"):
+		if os.path.exists(f"{self.base_dir}/{self.task_name}_{self.prompt_type}{self.difficulty_split}.csv"):
 			print("Found existing output df.")
-			outputs_df = pd.read_csv(f"{self.base_dir}/{self.task_name}_{self.prompt_type}.csv", index_col=0)
+			outputs_df = pd.read_csv(f"{self.base_dir}/{self.task_name}_{self.prompt_type}{self.difficulty_split}.csv", index_col=0)
 
 			if len(outputs_df) < len(self.test_dataset_df):
 				print("Found less samples than in test set. Loading df and resuming run.")
@@ -75,7 +85,7 @@ class ModelQuerierOnTask:
 
 	def dump_outputs_df(self):
 		print(f"Dumping outputs DataFrame with {len(self.outputs_df)} samples...")
-		self.outputs_df.to_csv(f'{self.base_dir}/{self.task_name}_{self.prompt_type}.csv')
+		self.outputs_df.to_csv(f'{self.base_dir}/{self.task_name}_{self.prompt_type}{self.difficulty_split}.csv')
 		print("Done.")
 
 	@property
