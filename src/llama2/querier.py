@@ -27,7 +27,7 @@ class ModelQuerierOnTask:
 					 "original_target",
 					 "difficulty_split"]
 		)
-		print(f"Created querier for {self.model_name} on {self.task_name} with {self.prompt_type} prompting.")
+		print(f"Created querier for {self.model_name} on {self.task_name} {self.difficulty_split} with {self.prompt_type} prompting.")
 
 	def query_model(self):
 		if not self.load_outputs_df():
