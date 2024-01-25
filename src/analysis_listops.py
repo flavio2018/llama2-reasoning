@@ -8,9 +8,10 @@ from llama2.parse import build_parser
 
 def main():
 	parser = build_parser('listops')
-	models_names = [('llama2-7b-chat', 'zero_shot'), ('llama2-13b-chat', 'zero_shot'), ('llama2-70b-chat', 'zero_shot'), ('llama2-7b-chat', 'zero_shot_cot'),
-					('llama2-13b-chat', 'zero_shot_cot'), ('llama2-70b-chat', 'zero_shot_cot'), ('mammoth-7b', 'zs_mammoth'), ('mammoth-13b', 'zs_mammoth'), 
-					('mammoth-70b', 'zs_mammoth'), ('metamath-7b', 'zs_metamath'), ('metamath-13b', 'zs_metamath'), ('metamath-70b', 'zs_metamath')]
+	models_names = [('llama2-7b-chat', 'zero_shot'), ('llama2-13b-chat', 'zero_shot'), ('llama2-70b-chat', 'zero_shot'),
+					# ('llama2-7b-chat', 'zero_shot_cot'), ('llama2-13b-chat', 'zero_shot_cot'), ('llama2-70b-chat', 'zero_shot_cot'),
+					('mammoth-7b', 'zs_mammoth'), ('mammoth-13b', 'zs_mammoth'), ('mammoth-70b', 'zs_mammoth'),
+					('metamath-7b', 'zs_metamath'), ('metamath-13b', 'zs_metamath'), ('metamath-70b', 'zs_metamath')]
 
 	tables = {
 		(model_name, prompt_type): load_table(model_name, prompt_type, 'listops')
@@ -34,7 +35,7 @@ def load_table(model_name, prompt_type, task_name):
 def reduce_tables(tables):
 	for k, df in tables.items():
 		if df is not None:
-			tables[k] = df[df['difficulty_split'] == 'N1_O4']
+			tables[k] = df[df['difficulty_split'] == 'N1_O2']
 	return tables
 
 

@@ -7,9 +7,10 @@ import os
 
 def main():
 
-	models_names = [('llama2-7b-chat', 'zero_shot'), ('llama2-13b-chat', 'zero_shot'), ('llama2-70b-chat', 'zero_shot'), ('llama2-7b-chat', 'zero_shot_cot'),
-					('llama2-13b-chat', 'zero_shot_cot'), ('llama2-70b-chat', 'zero_shot_cot'), ('mammoth-7b', 'zs_mammoth'), ('mammoth-13b', 'zs_mammoth'), 
-					('mammoth-70b', 'zs_mammoth'), ('metamath-7b', 'zs_metamath'), ('metamath-13b', 'zs_metamath'), ('metamath-70b', 'zs_metamath')]
+	models_names = [('llama2-7b-chat', 'zero_shot'), ('llama2-13b-chat', 'zero_shot'), ('llama2-70b-chat', 'zero_shot'),
+					# ('llama2-7b-chat', 'zero_shot_cot'), ('llama2-13b-chat', 'zero_shot_cot'), ('llama2-70b-chat', 'zero_shot_cot'),
+					('mammoth-7b', 'zs_mammoth'), ('mammoth-13b', 'zs_mammoth'), ('mammoth-70b', 'zs_mammoth'),
+					('metamath-7b', 'zs_metamath'), ('metamath-13b', 'zs_metamath'), ('metamath-70b', 'zs_metamath')]
 
 	tables_by_task = {
 		'listops': {
@@ -28,7 +29,7 @@ def main():
 
 	plot_tables_listops(tables_by_task['listops'])
 	plot_tables_arit_alg(tables_by_task['arithmetic'], 'arithmetic')
-	plot_tables_arit_alg(tables_by_task['algebra'], 'algebra')
+	# plot_tables_arit_alg(tables_by_task['algebra'], 'algebra')
 
 
 def load_table(model_name, prompt_type, task_name):
@@ -48,10 +49,10 @@ def reformat_floats(df):
 
 
 def plot_tables_listops(tables):
-	fig, axes = plt.subplots(len(tables)//3, 3, figsize=(5, 10), sharex=True, sharey=True)
+	fig, axes = plt.subplots(len(tables)//3, 3, figsize=(5, 5), sharex=True, sharey=True)
 
 	for ((model_name, prompt_type), table), ax in zip(tables.items(), axes.flat):
-		ax = sns.heatmap(table.iloc[::-1], ax=ax, square=True, vmin=0, vmax=1, annot=True, annot_kws={'fontsize': 6}, cbar=False, )
+		ax = sns.heatmap(table.iloc[:, ::-1].T, ax=ax, square=True, vmin=0, vmax=1, annot=True, annot_kws={'fontsize': 6}, cbar=False, )
 		ax.set_title(get_model_size(model_name))
 
 		if '7b' in model_name:
@@ -65,10 +66,10 @@ def plot_tables_listops(tables):
 
 
 def plot_tables_arit_alg(tables, task_name):
-	fig, axes = plt.subplots(len(tables)//3, 3, figsize=(7, 5), sharex=True, sharey=True)
+	fig, axes = plt.subplots(len(tables)//3, 3, figsize=(5, 3), sharex=True, sharey=True)
 
 	for ((model_name, prompt_type), table), ax in zip(tables.items(), axes.flat):
-		ax = sns.heatmap(table.T, ax=ax, square=True, vmin=0, vmax=1, annot=True, annot_kws={'fontsize': 10}, cbar=False, )
+		ax = sns.heatmap(table.T, ax=ax, square=True, vmin=0, vmax=1, annot=True, annot_kws={'fontsize': 6}, cbar=False, )
 		ax.set_title(get_model_size(model_name))
 
 		if '7b' in model_name:

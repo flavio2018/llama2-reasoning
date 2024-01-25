@@ -9,9 +9,10 @@ from llama2.parse import build_parser
 
 def main():
 	parser = build_parser('arithmetic')
-	models_names = [('llama2-7b-chat', 'zero_shot'), ('llama2-13b-chat', 'zero_shot'), ('llama2-70b-chat', 'zero_shot'), ('llama2-7b-chat', 'zero_shot_cot'),
-					('llama2-13b-chat', 'zero_shot_cot'), ('llama2-70b-chat', 'zero_shot_cot'), ('mammoth-7b', 'zs_mammoth'), ('mammoth-13b', 'zs_mammoth'), 
-					('mammoth-70b', 'zs_mammoth'), ('metamath-7b', 'zs_metamath'), ('metamath-13b', 'zs_metamath'), ('metamath-70b', 'zs_metamath')]
+	models_names = [('llama2-7b-chat', 'zero_shot'), ('llama2-13b-chat', 'zero_shot'), ('llama2-70b-chat', 'zero_shot'),
+					# ('llama2-7b-chat', 'zero_shot_cot'), ('llama2-13b-chat', 'zero_shot_cot'), ('llama2-70b-chat', 'zero_shot_cot'),
+					('mammoth-7b', 'zs_mammoth'), ('mammoth-13b', 'zs_mammoth'), ('mammoth-70b', 'zs_mammoth'),
+					('metamath-7b', 'zs_metamath'), ('metamath-13b', 'zs_metamath'), ('metamath-70b', 'zs_metamath')]
 
 	tables = {
 		(model_name, prompt_type): load_table(model_name, prompt_type, 'arithmetic')
