@@ -64,7 +64,7 @@ class ModelQuerierOnTask:
 			return
 		nesting, num_operands = self.difficulty_split.split('_')
 		nesting, num_operands = int(nesting[1]), int(num_operands[1])
-		self.test_dataset_df = self.test_dataset_df[(self.test_dataset_df['nesting'] == nesting) and (self.test_dataset_df['num_operands'] == num_operands)]
+		self.test_dataset_df = self.test_dataset_df[(self.test_dataset_df['nesting'] == nesting) & (self.test_dataset_df['num_operands'] == num_operands)]
 
 
 	def load_outputs_df(self):
