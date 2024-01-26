@@ -111,7 +111,7 @@ class ArithmeticPromptBuilder(PromptBuilder):
         self.blueprints = {
             "zero_shot": "Solve the following arithmetic expression: {}. Take the modulo 100 of intermediate values, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is': <NUMBER>.",
             
-            "zs_mammoth": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following arithmetic expression: {}. Take the modulo 100 of intermediate values, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response:\n",
+            "zs_mammoth": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following arithmetic expression: {}. Take the modulo 100 of intermediate values, i.e. keep the last two digits of the number with the sign.\n\n### Response:\n",
 
             "zs_metamath": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nSolve the following arithmetic expression: {}. Take the modulo 100 of intermediate values, i.e. keep the last two digits of the number with the sign. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response: Let's think step by step.",
             
@@ -151,7 +151,7 @@ class ListopsPromptBuilder(PromptBuilder):
         self.blueprints = {
             "zero_shot": "MIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Give the final answer stating 'The final answer is: <NUMBER>'.",
 
-            "zs_mammoth": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nMIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response:\n",
+            "zs_mammoth": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nMIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}.\n\n### Response:\n",
 
             "zs_metamath": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\nMIN, MAX and SM are operators on lists of single-digit integers which have the semantics of minimum, maximum and sum modulo 10, respectively. Solve the following expression involving these operators:\n{}. Give the final answer stating 'The final answer is: <NUMBER>'.\n\n### Response: Let's think step by step.",
 
